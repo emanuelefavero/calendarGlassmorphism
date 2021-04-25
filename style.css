@@ -1,0 +1,226 @@
+/* IMPORT POPPINS GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+/* COLOR CUSTOM PROPERTIES (VARIABLES) */
+:root {
+    --main-light-color: rgb(233, 235, 250);
+    --date-bg-hover-color: rgba(168, 187, 248, 0.1);
+    --date-bg-target-color: rgba(168, 187, 248, 0.15);
+    --date-bg-active-color: rgba(168, 187, 248, 0.3);
+}
+
+/* STYLING */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input,
+textarea,
+button,
+select,
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    text-decoration: none;
+}
+
+/* MAIN FONT */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* BACKGROUND */
+section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #1a2035;
+    overflow: hidden;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    background: linear-gradient(#b52bf5, #e73186);
+    border-radius: 50%;
+    transform: translate(-450px, -200px);
+}
+
+section::after {
+    content: '';
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    background: linear-gradient(#451ef1, #08ebdf);
+    border-radius: 50%;
+    transform: translate(500px, 250px);
+}
+
+/* CALENDAR */
+.calendar {
+    position: relative;
+    z-index: 1000;
+}
+
+.container {
+    position: relative;
+    width: 370px;
+    min-height: 370px;
+    background: rgba(176, 190, 252, 0.1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 2px 2px 4px rgba(236, 232, 232, 0.103);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(40px);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: smooth-opacity 1s ease-in;
+}
+
+#dycalendar {
+    width: 100%;
+    padding: 1.2rem;
+    margin-top: .6rem;
+}
+
+#dycalendar table {
+    width: 100%;
+    margin-top: 40px;
+    border-spacing: 5px;
+}
+
+#dycalendar table tr:nth-child(1) td {
+    border-radius: 4px;
+    font-weight: 400;
+}
+
+#dycalendar table td {
+    color: var(--main-light-color);
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: .6s;
+}
+
+/* Date Hover */
+#dycalendar table td:hover {
+    transition: .2s;
+    background: var(--date-bg-hover-color);
+}
+
+#dycalendar table tr:nth-child(1) td:hover {
+    background: none;
+    color: var(--main-light-color);
+    cursor: default;
+}
+
+#dycalendar table td:empty:hover {
+    background: none;
+    cursor: default;
+}
+
+/* Target Date */
+.dycalendar-month-container .dycalendar-today-date,
+.dycalendar-month-container .dycalendar-target-date {
+    background: var(--date-bg-target-color);
+    color: var(--main-light-color) !important;
+}
+
+.dycalendar-month-container .dycalendar-today-date:hover,
+.dycalendar-month-container .dycalendar-target-date:hover {
+    color: #fff !important;
+}
+
+/* Previous Next Buttons */
+.dycalendar-month-container .dycalendar-header .dycalendar-prev-next-btn.prev-btn {
+    color: var(--main-light-color);
+    width: 44px;
+    height: 38px;
+    left: 4px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+    transition: .6s;
+}
+
+.dycalendar-month-container .dycalendar-header .dycalendar-prev-next-btn.next-btn {
+    color: var(--main-light-color);
+    width: 44px;
+    height: 38px;
+    right: 4px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+    transition: .6s;
+}
+
+/* Previous NExt Buttons Hover */
+.dycalendar-month-container .dycalendar-header .dycalendar-prev-next-btn.prev-btn:hover {
+    background: var(--date-bg-hover-color);
+    transition: .2s;
+}
+
+.dycalendar-month-container .dycalendar-header .dycalendar-prev-next-btn.next-btn:hover {
+    background: var(--date-bg-hover-color);
+    transition: .2s;
+}
+
+/* Previous Next Buttons Active */
+.dycalendar-month-container .dycalendar-header .dycalendar-prev-next-btn.prev-btn:active {
+    background: var(--date-bg-active-color);
+}
+
+/* Month Title */
+.dycalendar-month-container .dycalendar-header .dycalendar-prev-next-btn.next-btn:active {
+    background: var(--date-bg-active-color);
+}
+
+.dycalendar-month-container .dycalendar-span-month-year {
+    color: var(--main-light-color);
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+/* Hide Calendar Text Selection */
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Chrome, Edge, Opera and Firefox */
+}
+
+/* Animations */
+@keyframes smooth-opacity {
+    40% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
